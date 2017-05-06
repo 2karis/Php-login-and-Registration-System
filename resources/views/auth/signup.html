@@ -1,0 +1,51 @@
+{# empty Twig template #}
+
+{% extends 'templates/app.html' %}
+
+{% block content %}
+            <br><br><br> <br><br><br>
+
+        
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+            <div class="panel-body">
+                <h2>Sign Up</h2>
+            </div>
+            <div class="panel-body">
+              <form action="{{path_for('auth.signup')}}" method="post" autocomplete="off">
+                <div class="form-group  {{  errors.username ? 'has-error':''}}">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control" id="username" placeholder="username" name="username" value="{{ old.username }}">
+                   {% if errors.username %}
+                  <span class="help-block">{{errors.username | first}}</span>
+                  {% endif %}
+                </div>
+                <div class="form-group {{  errors.email ? 'has-error':''}}">
+                  <label for="email">Email address</label>
+                  <input type="text" class="form-control" id="email" placeholder="email" name="email" value="{{ old.email }}">
+                  {% if errors.email %}
+                  <span class="help-block">{{errors.email | first}}</span>
+                  {% endif %}
+                </div>
+                <div class="form-group {{  errors.password ? 'has-error':''}}">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="password" name="password" >
+                   {% if errors.password %}
+                  <span class="help-block">{{errors.password | first}}</span>
+                  {% endif %}
+                </div>
+                <div class="checkbox">
+                  <label>
+                      <input type="checkbox"> i have read and understood <a href="#" >terms of service</a>
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+                {{ csrf.field | raw }}
+              </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+{% endblock %}

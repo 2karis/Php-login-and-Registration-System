@@ -1,0 +1,28 @@
+{# empty Twig template #}
+{% extends 'templates/app.html' %}
+
+{% block content %}
+<div class="container-fluid cards-row">
+<div class="container">
+
+{% for i in 0..11 %}
+
+ <div class="col-sm-6 col-md-4 col-lg-3">
+ <a href="#">
+    <div class="thumbnail">
+      <img src="https://1.bp.blogspot.com/-aFQ-W_KTFWQ/V6BdtpSUy6I/AAAAAAAAAH4/xD_U-BYItSsNvk1UGfROqLBzzU1h32oXQCLcB/s320/4-diwali-greeting-cards-by-ajay-acharya.jpg" alt="Bootstrap Thumbnail: like Material Design Cards">
+      <div class="caption">
+        <h3>blah blah blah blah blah</h3>
+        <p>City, location</p>
+      </div>
+    </div>
+  </div>
+  </a>
+{% endfor %}
+ 
+  
+   
+
+</div>
+</div>
+{% endblock %}
