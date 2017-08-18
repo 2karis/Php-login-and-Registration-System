@@ -69,17 +69,20 @@ class authController extends controller{
                 'password_old'=>v::noWhitespace()->notEmpty()->MatchesPassword($this->auth->user()->password),
                 'password_new'=> v::noWhitespace()->notEmpty(),
             ]);
-
         if($this->validator->failed()){
             return $response->withRedirect($this->router->pathFor('auth.password.change'));
         }
-        $this->auth->user->update([
-            'password'=>password_hash($password, PASSWORD_DEFAULT)
+        $password = password_hash($request->getParam('password_new'), PASSWORD_DEFAULT);
+       
+        $this->auth->user()->update([
+            'password'=>password_hash($request->getParam('password_new'), PASSWORD_DEFAULT)
         ]);
         $this->flash->addMessage('info', 'Your password was Changed.');
 
         return $response->withRedirect($this->router->pathFor('home'));
+        
     }
+
 
 
      
