@@ -72,7 +72,6 @@ class authController extends controller{
         if($this->validator->failed()){
             return $response->withRedirect($this->router->pathFor('auth.password.change'));
         }
-        $password = password_hash($request->getParam('password_new'), PASSWORD_DEFAULT);
        
         $this->auth->user()->update([
             'password'=>password_hash($request->getParam('password_new'), PASSWORD_DEFAULT)
